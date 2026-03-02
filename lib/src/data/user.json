@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nom": "Diallo",
+    "prenom": "Badji",
+    "telephone": "770000000",
+    "pin": "1234",
+    "solde": 150000
+  },
+  {
+    "id": 2,
+    "nom": "Sow",
+    "prenom": "Amina",
+    "telephone": "780000000",
+    "pin": "4321",
+    "solde": 95000
+  },
+  {
+    "id": 3,
+    "nom": "Fall",
+    "prenom": "Moussa",
+    "telephone": "760000000",
+    "pin": "1111",
+    "solde": 20000
+  }
+]
