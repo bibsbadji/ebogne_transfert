@@ -1,3 +1,4 @@
+import 'package:ebogne_transfert/src/ui/routes/route_path.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -7,11 +8,22 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.menu),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, setting);
+              },
+            );
+          },
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications_none),
-            onPressed: () {},
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, profile);
+            },
           ),
         ],
       ),
@@ -37,7 +49,8 @@ class DashboardScreen extends StatelessWidget {
                     context, "Envoyer", Icons.send, '/send_money'),
                 _buildActionButton(
                     context, "Recevoir", Icons.qr_code, '/receive_money'),
-                _buildActionButton(context, "Crédit", Icons.call, null),
+                _buildActionButton(
+                    context, "Historique", Icons.history, '/history'),
                 _buildActionButton(context, "Plus", Icons.more_horiz, null),
               ],
             ),
@@ -60,23 +73,6 @@ class DashboardScreen extends StatelessWidget {
             _buildRecentTransactions(),
           ],
         ),
-      ),
-      // Navigation par onglets (Bottom Navigation)
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Accueil"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.history), label: "Historique"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
-        ],
-        onTap: (index) {
-          if (index == 1) Navigator.pushNamed(context, '/history');
-          if (index == 2) Navigator.pushNamed(context, '/profile');
-          if (index == 0) Navigator.pushNamed(context, '/dashboard');
-          
-        },
       ),
     );
   }

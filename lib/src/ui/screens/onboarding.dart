@@ -1,4 +1,198 @@
+import 'package:ebogne_transfert/src/ui/widgets/forms/app_button/app_button.dart';
+import 'package:ebogne_transfert/src/utils/my_assets/icons_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:ebogne_transfert/src/ui/routes/route_path.dart';
+
+class OnboardingScreens extends StatefulWidget {
+  const OnboardingScreens({super.key});
+
+  @override
+  State<OnboardingScreens> createState() => _OnboardingScreensState();
+}
+
+class _OnboardingScreensState extends State<OnboardingScreens> {
+  final PageController _controller = PageController();
+  int currentIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                controller: _controller,
+                onPageChanged: (index) {
+                  setState(() => currentIndex = index);
+                },
+                children: const [
+                  WalletPage(),
+                  TransferPage(),
+                  SecurityPage(),
+                ],
+              ),
+            ),
+            AppButton(
+              text: "Suivant",
+              icon: const Icon(Icons.arrow_forward_ios,
+                  size: 16, color: Colors.blue),
+              onPressed: () {
+                if (currentIndex < 2) {
+                  _controller.nextPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                } else {
+                  Navigator.pushReplacementNamed(context, login);
+                }
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/* ---------------- PAGE 1 : PORTEFEUILLE ---------------- */
+
+class WalletPage extends StatelessWidget {
+  const WalletPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        children: [
+          const Spacer(),
+          CustomPaint(
+            size: const Size(140, 140),
+            painter: WalletPainter(),
+          ),
+          const SizedBox(height: 24),
+          const Text(
+            "GERER VOTRE ARGENT \n FACILEMENT",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          ),
+          const SizedBox(height: 12),
+          const Text(
+            "Envoyer et recevez votre argent en toute simplicité où que vous soyez",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 14, color: Colors.black54),
+          ),
+          const SizedBox(height: 24),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircleAvatar(radius: 4, backgroundColor: Colors.black),
+              SizedBox(width: 8),
+              CircleAvatar(radius: 4, backgroundColor: Colors.grey),
+              SizedBox(width: 8),
+              CircleAvatar(radius: 4, backgroundColor: Colors.grey),
+            ],
+          ),
+          const Spacer(),
+        ],
+      ),
+    );
+  }
+}
+
+/* ---------------- PAGE 2 : TRANSFERT ---------------- */
+
+class TransferPage extends StatelessWidget {
+  const TransferPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        children: [
+          const Spacer(),
+          CustomPaint(
+            size: const Size(140, 140),
+            painter: PaperPlanePainter(),
+          ),
+          const SizedBox(height: 24),
+          const Text(
+            "TRANSFERT INSTANTANÉS",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+          ),
+          const SizedBox(height: 12),
+          const Text(
+            "Envoyer de l’argent à vos proches\nen quelques secondes seulement",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 14, color: Colors.black54),
+          ),
+          const SizedBox(height: 24),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircleAvatar(radius: 4, backgroundColor: Colors.grey),
+              SizedBox(width: 8),
+              CircleAvatar(radius: 4, backgroundColor: Colors.black),
+              SizedBox(width: 8),
+              CircleAvatar(radius: 4, backgroundColor: Colors.grey),
+            ],
+          ),
+          const Spacer(),
+        ],
+      ),
+    );
+  }
+}
+
+/* ---------------- PAGE 3 : SÉCURITÉ ---------------- */
+
+class SecurityPage extends StatelessWidget {
+  const SecurityPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        children: [
+          const Spacer(),
+          CustomPaint(
+            size: const Size(140, 140),
+            painter: ShieldPainter(),
+          ),
+          const SizedBox(height: 24),
+          const Text(
+            "SÉCURITÉ MAXIMALE",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+          ),
+          const SizedBox(height: 12),
+          const Text(
+            "Vos transactions sont protégées par\nles dernières technologies de sécurité.",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 14, color: Colors.black54),
+          ),
+          const SizedBox(height: 24),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircleAvatar(radius: 4, backgroundColor: Colors.grey),
+              SizedBox(width: 8),
+              CircleAvatar(radius: 4, backgroundColor: Colors.grey),
+              SizedBox(width: 8),
+              CircleAvatar(radius: 4, backgroundColor: Colors.black),
+            ],
+          ),
+          const Spacer(),
+        ],
+      ),
+    );
+  }
+}
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -60,7 +254,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             _onboardingData[index]["title"]!,
             style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          
           const SizedBox(height: 20),
           Text(
             _onboardingData[index]["desc"]!,

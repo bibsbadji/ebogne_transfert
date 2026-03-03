@@ -1,4 +1,4 @@
-import 'package:ebogne_transfert/src/ui/routes/route_path.dart' as AppRouter;
+import 'package:ebogne_transfert/src/ui/routes/route_path.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/controller/login_controller.dart';
@@ -43,7 +43,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               content: Text("Compte créé avec succès ! Connectez-vous.")),
         );
         // Retour au login après inscription (Phase 6)
-        Navigator.pushReplacementNamed(context, AppRouter.login);
+        Navigator.pushReplacementNamed(context, OtpScreenState);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(result), backgroundColor: Colors.red),

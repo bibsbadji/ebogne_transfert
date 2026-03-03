@@ -1,3 +1,4 @@
+import 'package:ebogne_transfert/src/ui/routes/route_path.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'src/core/controller/login_controller.dart';
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: AppRouter.splash,
-      onGenerateRoute: AppRouter.generateRoute,
+      onGenerateRoute: Routes.generateRoute,
+      initialRoute: splash,
     );
   }
 }

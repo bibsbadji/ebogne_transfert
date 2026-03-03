@@ -1,34 +1,42 @@
-import 'package:flutter/material.dart';
-// Imports des écrans
-import 'package:ebogne_transfert/src/ui/screens/splash_screen.dart';
-import 'package:ebogne_transfert/src/ui/screens/onboarding.dart';
-import 'package:ebogne_transfert/src/ui/screens/login.dart';
-import 'package:ebogne_transfert/src/ui/screens/register.dart';
-import 'package:ebogne_transfert/src/ui/screens/dashboard.dart';
+import 'package:ebogne_transfert/src/ui/screens/otp.dart';
+import 'package:ebogne_transfert/src/ui/screens/receive.dart';
 import 'package:ebogne_transfert/src/ui/screens/send_money.dart';
-import 'package:ebogne_transfert/src/ui/screens/history.dart';
-import 'package:ebogne_transfert/src/ui/screens/profile.dart';
+import 'package:ebogne_transfert/src/ui/screens/splash_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:ebogne_transfert/src/ui/routes/route_path.dart';
+import '../screens/dashboard.dart';
+import '../screens/history.dart';
+import '../screens/login.dart';
+import '../screens/onboarding.dart';
+import '../screens/profile.dart';
+import '../screens/register.dart';
+import '../screens/connexion.dart';
+import 'package:ebogne_transfert/src/ui/screens/settings.dart';
 
-class AppRouter {
-  // Définition des noms de routes comme constantes pour éviter les erreurs de frappe
-  static const String splash = '/';
-  static const String onboarding = '/onboarding';
-  static const String login = '/login';
-  static const String register = '/register';
-  static const String dashboard = '/dashboard';
-  static const String sendMoney = '/send_money';
-  static const String history = '/history';
-  static const String profile = '/profile';
-  static const String settings = '/settings';
-
+class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case setting:
+      return MaterialPageRoute( 
+        builder: (_) => SettingScreen( ));
+      
+      case connexion:
+        return MaterialPageRoute(
+            builder: (_) => ConnexionScreen(onSuccess: () {}));
       case splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case onboarding:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+        return MaterialPageRoute(builder: (_) => const OnboardingScreens());
       case login:
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case OtpScreenState:
+        return MaterialPageRoute(
+            builder: (_) => OtpScreen(
+                  phone: '',
+                  onVerify: (String code) {},
+                ));
+      case receiveMoney:
+        return MaterialPageRoute(builder: (_) => const ReceiveMoneyScreen());
       case register:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case dashboard:
