@@ -36,31 +36,29 @@ class AppButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius),
           ),
         ),
-        child:
-            icon != null
-                ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    icon!,
-                    const SizedBox(width: 8),
-                    Text(
-                      text,
-                      style: TextStyle(
-                        color:
-                            textColor ??
-                            Theme.of(context).colorScheme.onPrimary,
-                        fontSize: fontSize,
-                      ),
+        child: icon != null
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  icon!,
+                  const SizedBox(width: 8),
+                  Text(
+                    text,
+                    style: TextStyle(
+                      color:
+                          textColor ?? Theme.of(context).colorScheme.onPrimary,
+                      fontSize: fontSize,
                     ),
-                  ],
-                )
-                : Text(
-                  text,
-                  style: TextStyle(
-                    color: textColor ?? Theme.of(context).colorScheme.onPrimary,
-                    fontSize: fontSize,
                   ),
+                ],
+              )
+            : Text(
+                text,
+                style: TextStyle(
+                  color: textColor ?? Theme.of(context).colorScheme.onPrimary,
+                  fontSize: fontSize,
                 ),
+              ),
       ),
     );
   }

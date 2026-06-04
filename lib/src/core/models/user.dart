@@ -1,47 +1,27 @@
+// les attributs de la classe User
 class User {
-  final int idUtilisateur ;
-  final String nom;
-  final String prenom;
-  final String telephone;
+  final int id;
+  final String name;
   final String email;
-  final double solde;
-  final String pin;
-  final String dateCreation;
+  final String phone;
+  final String code;
 
+// constructeur de la classe User
   User({
-    required this.idUtilisateur,
-    required this.nom,
-    required this.prenom,
-    required this.telephone,
+    required this.id,
+    required this.name,
     required this.email,
-    required this.solde,
-    required this.pin,
-    required this.dateCreation,
+    required this.phone,
+    required this.code,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      idUtilisateur: json['idUtilisateur'] as int,
-      nom: json['nom'] as String,
-      prenom: json['prenom'] as String,
-      telephone: json['telephone'] as String,
-      email: json['email'] as String,
-      solde: json['solde'] as double,
-      pin: json['pin'] as String,
-      dateCreation: json['dateCreation'] as String,
+      id: json['id'],
+      name: json['name'],
+      email: json['email'],
+      phone: json['phone'],
+      code: json['code'],
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'idUtilisateur': idUtilisateur,
-      'nom': nom,
-      'prenom': prenom,
-      'telephone': telephone,
-      'email': email,
-      'solde': solde,
-      'pin': pin,
-      'dateCreation': dateCreation
-    };
   }
 }

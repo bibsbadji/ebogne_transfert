@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class TextInput extends StatefulWidget {
   TextInput({
-    Key? key,
+    super.key,
     required this.labelText,
     this.controler,
     this.iconData,
@@ -14,7 +14,7 @@ class TextInput extends StatefulWidget {
     this.obscureText,
     this.text,
     this.validator,
-  }) : super(key: key);
+  });
 
   final TextEditingController? controler;
   final String labelText;
