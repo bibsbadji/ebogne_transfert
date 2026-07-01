@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const Text(
-                      'Connexion',
+                      'Ebogne Transfert',
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.w700,
